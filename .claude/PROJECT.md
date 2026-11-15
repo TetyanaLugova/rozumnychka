@@ -23,6 +23,13 @@ prototypes/       — прототипи від замовниці
 
 Запуск локально: `python3 -m http.server 8765` у корені → http://localhost:8765
 
+## Репозиторій і деплой
+- GitHub (публічний): https://github.com/TetyanaLugova/rozumnychka — гілка `main`.
+- Демо для замовниці (GitHub Pages, деплой з `main` / root): https://tetyanalugova.github.io/rozumnychka/
+- Оновити сайт = `git push` у `main`, Pages перезбирається за ~1 хв. `.nojekyll` вимикає Jekyll.
+- `prototypes/` і `assets/brand/` у `.gitignore` — матеріали замовниці лише локально.
+- canonical / OG / sitemap / robots тимчасово вказують на адресу Pages — замінити, коли буде свій домен.
+
 ## Палітра (css/style.css → :root)
 | Змінна | Колір | Звідки |
 |---|---|---|
