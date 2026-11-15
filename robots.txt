@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rozumnychka.irpin.ua/sitemap.xml
+Sitemap: https://tetyanalugova.github.io/rozumnychka/sitemap.xml
