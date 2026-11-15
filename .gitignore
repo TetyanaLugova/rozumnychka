@@ -1,0 +1,5 @@
+# Матеріали від замовниці — лише локально
+prototypes/
+assets/brand/
+
+.DS_Store
