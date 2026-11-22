@@ -3,3 +3,6 @@ prototypes/
 assets/brand/
 
 .DS_Store
+
+# Оригінали фото (важкі) — на сайті використовуються оптимізовані копії з assets/img/
+foto/

@@ -1,0 +1,14 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Запустити сайт",
+      "type": "shell",
+      "command": "(sleep 1 && open http://localhost:8000) & python3 -m http.server 8000",
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": { "kind": "build", "isDefault": true },
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    }
+  ]
+}

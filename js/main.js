@@ -15,13 +15,13 @@
     minisad: {
       color: '#253F8C',
       items: [
-        { id: 'minisadok', title: 'Мінісадок', age: '3–6 років', schedule: 'Пн–Пт · 09:00–13:00', price: 'Уточнюється', bg: '#EAF4E1',
+        { id: 'minisadok', title: 'Мінісадок', age: '3–6 років', schedule: 'Пн–Пт · 09:00–13:00', price: 'Уточнюється', bg: '#EAF4E1', img: 'assets/img/minisad.jpg',
           short: 'Комплексний розвиток, ігри, спілкування та творчість.',
           desc: 'Ігрове навчання, творчість, розвиток комунікації та самостійності у невеликій групі.' },
-        { id: 'minyasla', title: 'Міні-ясла', age: '2–3 роки', schedule: 'Пн–Пт · 09:00–12:00', price: 'Уточнюється', bg: '#FCE8F2',
+        { id: 'minyasla', title: 'Міні-ясла', age: '2–3 роки', schedule: 'Пн–Пт · 09:00–12:00', price: 'Уточнюється', bg: '#FCE8F2', img: 'assets/img/nursery.jpg',
           short: 'М’яка адаптація та перші кроки до самостійності.',
           desc: 'Турботливий простір для наймолодших: режим, ігри, сенсорика та знайомство з іншими дітьми.' },
-        { id: 'half-day', title: 'Група неповного дня', age: '3–5 років', schedule: 'Пн–Пт · 15:00–18:00', price: 'Уточнюється', bg: '#E3E9F8',
+        { id: 'half-day', title: 'Група неповного дня', age: '3–5 років', schedule: 'Пн–Пт · 15:00–18:00', price: 'Уточнюється', bg: '#E3E9F8', img: 'assets/img/half-day.jpg',
           short: 'Розвиток та адаптація у невеликій групі.',
           desc: 'Вечірня група для тих, хто хоче поєднати розвиток, творчість та спілкування з однолітками.' },
       ],
@@ -186,7 +186,9 @@
   function renderCards(key) {
     cardsEl.innerHTML = COURSES[key].items.map((c, i) => `
       <button class="card" data-course="${c.id}" aria-haspopup="dialog">
-        <div class="card__art" style="--c:${c.bg}" aria-hidden="true">${SHAPES[i % 3](PALETTE[i % 3])}</div>
+        <div class="card__art" style="--c:${c.bg}" aria-hidden="true">${c.img
+          ? `<img src="${c.img}" alt="" width="1200" height="800" loading="lazy" decoding="async">`
+          : SHAPES[i % 3](PALETTE[i % 3])}</div>
         <div class="card__body">
           <h3>${c.title}</h3>
           <span class="card__age">${c.age}</span>
@@ -238,6 +240,19 @@
     $('#cm-price').textContent = c.price;
     openModal(courseModal);
   });
+
+  /* =========================================================
+     Слайдер «Простір»: дублюємо стрічку для безшовного циклу
+     ========================================================= */
+  const track = $('.slider__track');
+  if (track && !reduce) {
+    [...track.children].forEach((li) => {
+      const clone = li.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+    track.style.setProperty('--dur', `${track.children.length / 2 * 5}s`);
+  }
 
   /* =========================================================
      Форма запису
